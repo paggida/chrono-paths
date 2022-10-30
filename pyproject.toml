@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "chrono-paths"
+version = "0.1.0"
+description = "This project aims to help organize images and photos for backups"
+authors = ["Danilo Paggi"]
+readme = "README.md"
+packages = [{ include = "chrono_paths" }]
+
+[tool.poe.tasks]
+start = "python app.py"
+test = "poetry run pytest -v -x --cov=."
+code_style_check = [
+    { cmd = "isort --check --diff ." },
+    { cmd = "black --check --diff ." },
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+poethepoet = "^0.16.4"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.0"
+black = "^22.10.0"
+isort = "^5.10.1"
+pytest-cov = "^4.0.0"
+faker = "^15.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
