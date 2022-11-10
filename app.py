@@ -1,10 +1,14 @@
+import sys
+
 from src.infrastructure.logger import Logger
+from src.domain.argument import Argument
 
 logger = Logger(__name__)
 
 if __name__ == "__main__":
-    logger.log("Log message")
-    logger.warn("Warning message without long message")
-    logger.warn("Warning title", "Warning message without long message")
-    logger.error("Error message without operation")
-    logger.error("Error message with operation", operation="main")
+    app_arguments = Argument(sys.argv)
+
+    if app_arguments.is_valid:
+        logger.log(f"Iupi, we get arguments: {app_arguments.argument_list}")
+    else:
+        logger.error(app_arguments.errors)
