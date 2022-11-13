@@ -1,5 +1,6 @@
-from faker import Faker
 import pytest
+from faker import Faker
+
 from src.infrastructure.logger import Logger
 
 fake = Faker(locale="pt-BR")
@@ -34,6 +35,8 @@ class TestLogger:
         message = fake.text()
         full_message = fake.text()
         operation = fake.pystr()
-        formatted_message = logger._get_log_message(message, full_message, operation=operation)
+        formatted_message = logger._get_log_message(
+            message, full_message, operation=operation
+        )
 
         assert formatted_message == f"({operation}): {message} - {full_message}"

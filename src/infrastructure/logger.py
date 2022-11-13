@@ -42,4 +42,3 @@ class Logger(object):
     ):
         operation_msg = f"({operation if operation else ''}): " if operation else ""
         return f"{operation_msg if operation_msg else ''}{short_message}{f' - {full_message}' if full_message else ''}"
-
