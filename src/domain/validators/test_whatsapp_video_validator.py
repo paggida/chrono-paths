@@ -2,7 +2,7 @@ from src.domain.validators.whatsapp_video_validator import WhatsappVideoValidato
 
 
 class TestWhatsappVideoValidator:
-    def test_return_folder_name_with_valid_file_name(self):
+    def test_returns_folder_name_with_valid_file_name(self):
         whatsapp_video_validator_format_one = WhatsappVideoValidator(
             "VID-20150506-WA0047.mp4"
         )
@@ -13,7 +13,7 @@ class TestWhatsappVideoValidator:
         assert whatsapp_video_validator_format_one.validate() == "[2015.05.06]"
         assert whatsapp_video_validator_format_two.validate() == "[2011.11.08]"
 
-    def test_return_empty_string_with_invalid_file_name(self):
+    def test_returns_empty_string_with_invalid_file_name(self):
         whatsapp_video_validator_format_one_with_letter = WhatsappVideoValidator(
             "VID-2015o506-WA0047.mp4"
         )
