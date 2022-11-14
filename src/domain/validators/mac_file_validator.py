@@ -1,6 +1,8 @@
 import enum
 import os
 
+import unidecode
+
 from src.domain.folder import Folder
 
 
@@ -12,7 +14,7 @@ class MacAcceptedFormats(enum.Enum):
 
 class MacFileValidator(object):
     def __init__(self, file_name):
-        self.name: str = os.path.splitext(file_name)[0]
+        self.name: str = unidecode.unidecode(os.path.splitext(file_name)[0])
         self._format_functions: dict = {
             MacAcceptedFormats.ONE: self._get_date_to_format_one,
             MacAcceptedFormats.TWO: self._get_date_to_format_two,
