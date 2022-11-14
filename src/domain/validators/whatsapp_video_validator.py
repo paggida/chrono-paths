@@ -1,17 +1,18 @@
 import enum
+import os
 
 from src.domain.folder import Folder
 
 
 class WhatsappVideoAcceptedFormats(enum.Enum):
-    ONE = "VID-20150506-WA0047.mp4"
-    TWO = "Video-2011-11-08-19-53-33.mp4"
+    ONE = "VID-20150506-WA0047"
+    TWO = "Video-2011-11-08-19-53-33"
     WITHOUT_FORMAT = None
 
 
 class WhatsappVideoValidator(object):
     def __init__(self, file_name):
-        self.name: str = file_name
+        self.name: str = os.path.splitext(file_name)[0]
         self._format_functions: dict = {
             WhatsappVideoAcceptedFormats.ONE: self._get_date_to_format_one,
             WhatsappVideoAcceptedFormats.TWO: self._get_date_to_format_two,

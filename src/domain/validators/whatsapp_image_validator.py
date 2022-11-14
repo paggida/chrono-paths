@@ -1,17 +1,18 @@
 import enum
+import os
 
 from src.domain.folder import Folder
 
 
 class WhatsappImageAcceptedFormats(enum.Enum):
-    ONE = "IMG-20130916-WA0015.jpg"
-    TWO = "WhatsApp Image 2018-09-16 at 12.21.27.jpeg"
+    ONE = "IMG-20130916-WA0015"
+    TWO = "WhatsApp Image 2018-09-16 at 12.21.27"
     WITHOUT_FORMAT = None
 
 
 class WhatsappImageValidator(object):
     def __init__(self, file_name):
-        self.name: str = file_name
+        self.name: str = os.path.splitext(file_name)[0]
         self._format_functions: dict = {
             WhatsappImageAcceptedFormats.ONE: self._get_date_to_format_one,
             WhatsappImageAcceptedFormats.TWO: self._get_date_to_format_two,
