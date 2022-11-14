@@ -45,6 +45,15 @@ command `poetry install`
 For the application start to organize your photos and videos use the command `poetry run poe start Path` and replace
 the `Path` for the path to the files that you want to be organized.
 
+
+By default, the application will keep the files at the source and will only copy them to the created folders. If you want the process not kept files in the root folder, use the `-m` or `--move_files` operator, as shown in the examples below:
+
+    poetry run poe -m Path
+
+or
+
+    poetry run poe --move_files Path
+
 ## 📝 Tests
 
 Pointing to the project's root folder with your terminal and the prerequisites concluded, you may use the command below:
@@ -53,7 +62,3 @@ Pointing to the project's root folder with your terminal and the prerequisites c
 
 All tests (Files with names beginning with `test_`) will be run automatically and the results will be displayed on the
 terminal.
-
-## 📁Organization
-
-TODO
